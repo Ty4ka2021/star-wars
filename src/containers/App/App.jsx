@@ -1,12 +1,14 @@
 import React from 'react'
-import { getApiResource } from '../../utils/network'
+import PeoplePage from '../PeoplePage/PeoplePage'
 import s from './App.module.css'
 
 
 
 const App = () => {
   return (
-    <div className={s.App}>Hello</div>
+    <div className={s.App}>
+      <PeoplePage />
+    </div>
   )
 }
 
