@@ -1,5 +1,5 @@
+import PeoplePage from '@containers/PeoplePage/PeoplePage'
 import React from 'react'
-import PeoplePage from '../PeoplePage/PeoplePage'
 import s from './App.module.css'
 
 

@@ -1,9 +1,9 @@
+import PeopleList from '@components/PeoplePage/PeopleList/PeopleList'
+import { API_PEOPLE } from '@constants/api'
+import { withErrorApi } from '@hoc-helpers/withErrorApi'
+import { getPeopleId, getPeopleImage } from '@services/getPeopleData'
+import { getApiResource } from '@utils/network'
 import React, { useEffect, useState } from 'react'
-import PeopleList from '../../components/PeoplePage/PeopleList/PeopleList'
-import { API_PEOPLE } from '../../constants/api'
-import { withErrorApi } from '../../hoc-helpers/withErrorApi'
-import { getPeopleId, getPeopleImage } from '../../services/getPeopleData'
-import { getApiResource } from '../../utils/network'
 
 const PeoplePage = ({ setErrorApi }) => {
 

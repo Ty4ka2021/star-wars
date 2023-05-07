@@ -1,4 +1,4 @@
-import { GUIDE_IMG_EXTENSION, HTTP, HTTPS, SWAPI_PEOPLE, SWAPI_ROOT, URL_IMG_PERSON } from '../constants/api'
+import { GUIDE_IMG_EXTENSION, HTTP, HTTPS, SWAPI_PEOPLE, SWAPI_ROOT, URL_IMG_PERSON } from '@constants/api'
 
 const checkProtocol = url => {
 	if (url.indexOf(HTTPS) !== -1) {
