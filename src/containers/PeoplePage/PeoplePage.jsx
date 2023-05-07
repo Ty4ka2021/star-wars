@@ -3,6 +3,7 @@ import { API_PEOPLE } from '@constants/api'
 import { withErrorApi } from '@hoc-helpers/withErrorApi'
 import { getPeopleId, getPeopleImage } from '@services/getPeopleData'
 import { getApiResource } from '@utils/network'
+import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 
 const PeoplePage = ({ setErrorApi }) => {
@@ -49,6 +50,10 @@ const PeoplePage = ({ setErrorApi }) => {
 	)
 }
 
+PeoplePage.propTypes = {
+	setErrorApi: PropTypes.func
+}
 
 
 export default withErrorApi(PeoplePage)
+
