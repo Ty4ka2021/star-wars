@@ -22,6 +22,7 @@ export const getApiResource = async (url) => {
 	} catch (error) {
 		console.error('Could not fetch.', error.message)
 		return false
+		//test
 	}
 }
 
