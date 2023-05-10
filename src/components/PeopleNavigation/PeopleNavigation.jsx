@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from 'react-router-dom'
+import UIButton from '../UI/UIButton/UIButton'
 import s from "./PeopleNavigation.module.css"
 
 const PeopleNavigation = ({
@@ -15,24 +16,20 @@ const PeopleNavigation = ({
 				<Link to={`/people/?page=${counterPage - 1}`}
 					className={s.link}
 				>
-					<button
+					<UIButton
+						text='Previous'
 						onClick={handleChangePrev}
-						className={s.button}
 						disabled={!prevPage}
-					>
-						Previous
-					</button>
+					/>
 				</Link>
 				<Link to={`/people/?page=${counterPage + 1}`}
 					className={s.link}
 				>
-					<button
+					<UIButton
+						text='Next'
 						onClick={handleChangeNext}
-						className={s.button}
 						disabled={!nextPage}
-					>
-						Next
-					</button>
+					/>
 				</Link>
 			</div>
 		</>
