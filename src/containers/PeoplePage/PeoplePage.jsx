@@ -6,12 +6,16 @@ import { getPeopleId, getPeopleImage } from '@services/getPeopleData'
 import { getApiResource } from '@utils/network'
 import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
+import PeopleNavigation from '../../components/PeopleNavigation/PeopleNavigation'
+import { getPeoplePageId } from '../../services/getPeopleData'
+import { changeHTTP } from '../../utils/network'
 
 const PeoplePage = ({ setErrorApi }) => {
 
 	const [people, setPeople] = useState(null)
 	const [prevPage, setPrevPage] = useState(null)
 	const [nextPage, setNextPage] = useState(null)
+	const [counterPage, setCounterPage] = useState(1)
 
 	const query = useQueryParams()
 	const queryPage = query.get('page')
@@ -32,8 +36,9 @@ const PeoplePage = ({ setErrorApi }) => {
 			})
 
 			setPeople(peopleList)
-			setPrevPage(res.previous)
-			setNextPage(res.next)
+			setPrevPage(changeHTTP(res.previous))
+			setNextPage(changeHTTP(res.next))
+			setCounterPage(getPeoplePageId(url))
 			setErrorApi(false)
 		} else {
 			setErrorApi(true)
@@ -50,6 +55,12 @@ const PeoplePage = ({ setErrorApi }) => {
 	return (
 		<>
 			<h2 className='header__text'>Navigation</h2>
+			<PeopleNavigation
+				getResource={getResource}
+				prevPage={prevPage}
+				nextPage={nextPage}
+				counterPage={counterPage}
+			/>
 			{people &&
 				<PeopleList people={people} />
 			}
