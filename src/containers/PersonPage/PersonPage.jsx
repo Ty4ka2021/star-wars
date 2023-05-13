@@ -5,6 +5,7 @@ import { getPeopleImage } from '@services/getPeopleData'
 import { getApiResource } from '@utils/network'
 import React, { useEffect, useState } from "react"
 import { useParams } from 'react-router'
+import PersonLinkBack from '../../components/PersonPage/PersonLinkBack/PersonLinkBack'
 import s from './PersonPage.module.css'
 
 const PersonPage = ({ setErrorApi }) => {
@@ -41,6 +42,7 @@ const PersonPage = ({ setErrorApi }) => {
 
 	return (
 		<>
+			<PersonLinkBack />
 			<div className={s.PersonPage}>
 
 				<span className={s.name}>{personName}</span>
