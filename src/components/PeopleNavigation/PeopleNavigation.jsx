@@ -11,28 +11,26 @@ const PeopleNavigation = ({
 	const handleChangePrev = () => getResource(prevPage)
 
 	return (
-		<>
-			<div className={s.PeopleNavigation}>
-				<Link to={`/people/?page=${counterPage - 1}`}
-					className={s.link}
-				>
-					<UIButton
-						text='Previous'
-						onClick={handleChangePrev}
-						disabled={!prevPage}
-					/>
-				</Link>
-				<Link to={`/people/?page=${counterPage + 1}`}
-					className={s.link}
-				>
-					<UIButton
-						text='Next'
-						onClick={handleChangeNext}
-						disabled={!nextPage}
-					/>
-				</Link>
-			</div>
-		</>
+		<div className={s.PeopleNavigation}>
+			<Link to={`/people/?page=${counterPage - 1}`}
+				className={s.link}
+			>
+				<UIButton
+					text='Previous'
+					onClick={handleChangePrev}
+					disabled={!prevPage}
+				/>
+			</Link>
+			<Link to={`/people/?page=${counterPage + 1}`}
+				className={s.link}
+			>
+				<UIButton
+					text='Next'
+					onClick={handleChangeNext}
+					disabled={!nextPage}
+				/>
+			</Link>
+		</div>
 	)
 }
 
