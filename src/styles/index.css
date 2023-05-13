@@ -12,13 +12,16 @@
   --font-bold: 600;
   --font-family-main: sans-serif;
 
-  --font-size-header: 26px;
-  --font-size-subheader: 18px;
   --font-size-small: 14px;
   --font-size-main: 16px;
+  --font-size-subheader: 18px;
+  --font-size-header: 26px;
+
+  --margin-list: 7px;
 
   --width-max: 1200px;
 
+  --spacing-ultrasmall: 5px;
   --spacing-small: 10px;
   --spacing-medium: 20px;
   --spacing-large: 30px;

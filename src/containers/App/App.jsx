@@ -4,11 +4,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Header from '../../components/Header/Header'
 import HomePage from '../HomePage/HomePage'
 import NotFountPage from '../NotFountPage/NotFountPage'
+import PersonPage from '../PersonPage/PersonPage'
 import s from './App.module.css'
 
 
 
 const App = () => {
+
   return (
     <>
       <BrowserRouter>
@@ -18,6 +20,7 @@ const App = () => {
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/people' element={<PeoplePage />} />
+            <Route path='/people/:userId' element={<PersonPage />} />
             <Route path='/not-found' element={<NotFountPage />} />
             <Route path='/*' element={<NotFountPage />} />
           </Routes>
