@@ -4,7 +4,6 @@ import { withErrorApi } from '@hoc-helpers/withErrorApi'
 import { useQueryParams } from '@hooks/useQueryParams'
 import { getPeopleId, getPeopleImage } from '@services/getPeopleData'
 import { getApiResource } from '@utils/network'
-import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 import PeopleNavigation from '../../components/PeopleNavigation/PeopleNavigation'
 import { getPeoplePageId } from '../../services/getPeopleData'
@@ -39,9 +38,7 @@ const PeoplePage = ({ setErrorApi }) => {
 			setPrevPage(changeHTTP(res.previous))
 			setNextPage(changeHTTP(res.next))
 			setCounterPage(getPeoplePageId(url))
-			setErrorApi(false)
-		} else {
-			setErrorApi(true)
+			setErrorApi(!res)
 		}
 
 	}
@@ -66,10 +63,6 @@ const PeoplePage = ({ setErrorApi }) => {
 			}
 		</>
 	)
-}
-
-PeoplePage.propTypes = {
-	setErrorApi: PropTypes.func
 }
 
 

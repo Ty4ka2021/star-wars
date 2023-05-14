@@ -1,6 +1,7 @@
 import PersonInfo from '@components/PersonPage/PersonInfo/PersonInfo'
 import PersonPhoto from '@components/PersonPage/PersonPhoto/PersonPhoto'
 import { API_PERSON } from '@constants/api'
+import { withErrorApi } from '@hoc-helpers/withErrorApi'
 import { getPeopleImage } from '@services/getPeopleData'
 import { getApiResource } from '@utils/network'
 import React, { useEffect, useState } from "react"
@@ -32,9 +33,10 @@ const PersonPage = ({ setErrorApi }) => {
 				setPersonName(res.name)
 				setPersonPhoto(getPeopleImage(userId))
 
-				setErrorApi(false)
-			} else {
-				setErrorApi(true)
+
+				console.log(res.films)
+
+				setErrorApi(!res)
 			}
 		})()
 	}, [])
@@ -57,4 +59,4 @@ const PersonPage = ({ setErrorApi }) => {
 	)
 }
 
-export default PersonPage
+export default withErrorApi(PersonPage)
