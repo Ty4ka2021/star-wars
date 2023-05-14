@@ -1,19 +1,24 @@
 import PersonInfo from '@components/PersonPage/PersonInfo/PersonInfo'
+import PersonLinkBack from '@components/PersonPage/PersonLinkBack/PersonLinkBack'
 import PersonPhoto from '@components/PersonPage/PersonPhoto/PersonPhoto'
 import { API_PERSON } from '@constants/api'
 import { withErrorApi } from '@hoc-helpers/withErrorApi'
 import { getPeopleImage } from '@services/getPeopleData'
 import { getApiResource } from '@utils/network'
-import React, { useEffect, useState } from "react"
+import React, { Suspense, useEffect, useState } from "react"
 import { useParams } from 'react-router'
-import PersonLinkBack from '../../components/PersonPage/PersonLinkBack/PersonLinkBack'
+import UILoading from '../../components/UI/UILoading/UILoading'
 import s from './PersonPage.module.css'
+
+// import PersonFilms from '@components/PersonPage/PersonFilms/PersonFilms'
+const PersonFilms = React.lazy(() => import('@components/PersonPage/PersonFilms/PersonFilms'))
 
 const PersonPage = ({ setErrorApi }) => {
 	const { userId } = useParams()
 	const [personInfo, setPersonInfo] = useState(null)
 	const [personName, setPersonName] = useState(null)
 	const [personPhoto, setPersonPhoto] = useState(null)
+	const [personFilms, setPersonFilms] = useState(null)
 
 	useEffect(() => {
 		(async () => {
@@ -33,8 +38,7 @@ const PersonPage = ({ setErrorApi }) => {
 				setPersonName(res.name)
 				setPersonPhoto(getPeopleImage(userId))
 
-
-				console.log(res.films)
+				res.films.length && setPersonFilms(res.films)
 
 				setErrorApi(!res)
 			}
@@ -51,7 +55,14 @@ const PersonPage = ({ setErrorApi }) => {
 
 				<div className={s.container}>
 					<PersonPhoto personPhoto={personPhoto} personName={personName} />
+
 					{personInfo && <PersonInfo personInfo={personInfo} />}
+
+					{personFilms && (
+						<Suspense fallback={<UILoading />}>
+							<PersonFilms personFilms={personFilms} />
+						</Suspense>
+					)}
 				</div>
 
 			</div>
