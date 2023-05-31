@@ -6,6 +6,7 @@ import HomePage from '../HomePage/HomePage'
 import NotFountPage from '../NotFountPage/NotFountPage'
 import PersonPage from '../PersonPage/PersonPage'
 import s from './App.module.css'
+import FavoritesPage from '../FavoritesPage/FavoritesPage'
 
 
 
@@ -20,6 +21,7 @@ const App = () => {
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/people' element={<PeoplePage />} />
+            <Route path='/favorites' element={<FavoritesPage />} />
             <Route path='/people/:userId' element={<PersonPage />} />
             <Route path='/not-found' element={<NotFountPage />} />
             <Route path='/*' element={<NotFountPage />} />

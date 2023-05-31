@@ -1,7 +1,7 @@
 .container {
 	width: 250px;
 	height: 350px;
-
+	position: relative;
 }
 
 .photo {
@@ -10,4 +10,13 @@
 	border-radius: var(--border-radius-medium);
 	object-fit: cover;
 	object-position: center center;
+}
+
+.favorite {
+	position: absolute;
+	top: -15px;
+	right: -25px;
+	width: 55px;
+	height: 55px;
+	cursor: pointer;
 }

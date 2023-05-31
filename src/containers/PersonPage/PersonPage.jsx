@@ -6,6 +6,7 @@ import { withErrorApi } from '@hoc-helpers/withErrorApi'
 import { getPeopleImage } from '@services/getPeopleData'
 import { getApiResource } from '@utils/network'
 import React, { Suspense, useEffect, useState } from "react"
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router'
 import UILoading from '../../components/UI/UILoading/UILoading'
 import s from './PersonPage.module.css'
@@ -15,14 +16,21 @@ const PersonFilms = React.lazy(() => import('@components/PersonPage/PersonFilms/
 
 const PersonPage = ({ setErrorApi }) => {
 	const { userId } = useParams()
+	const [personId, setPersonId] = useState(null)
 	const [personInfo, setPersonInfo] = useState(null)
 	const [personName, setPersonName] = useState(null)
 	const [personPhoto, setPersonPhoto] = useState(null)
 	const [personFilms, setPersonFilms] = useState(null)
+	const [personFavorite, setPersonFavorite] = useState(false)
+
+	const storeDate = useSelector(state => state.favoriteReducer)
+
 
 	useEffect(() => {
 		(async () => {
 			const res = await getApiResource(`${API_PERSON}/${userId}`)
+
+			storeDate[userId] ? setPersonFavorite(true) : setPersonFavorite(false)
 
 			if (res) {
 				setPersonInfo([
@@ -34,7 +42,7 @@ const PersonPage = ({ setErrorApi }) => {
 					{ title: 'Birth Year', data: res.birth_year },
 					{ title: 'Gender', data: res.gender },
 				])
-
+				setPersonId(userId)
 				setPersonName(res.name)
 				setPersonPhoto(getPeopleImage(userId))
 
@@ -54,7 +62,13 @@ const PersonPage = ({ setErrorApi }) => {
 				<span className={s.name}>{personName}</span>
 
 				<div className={s.container}>
-					<PersonPhoto personPhoto={personPhoto} personName={personName} />
+					<PersonPhoto
+						personId={personId}
+						personPhoto={personPhoto}
+						personName={personName}
+						personFavorite={personFavorite}
+						setPersonFavorite={setPersonFavorite}
+					/>
 
 					{personInfo && <PersonInfo personInfo={personInfo} />}
 
