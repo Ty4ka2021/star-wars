@@ -1,6 +1,7 @@
 :root {
   --color-dark-gray: #10100e;
   --color-white: #fff;
+  --color-lightgray: #dfe2df;
   --color-black: #000;
   --color-grey: #9c9c9c;
   --color-yellow: #ffff00;
@@ -60,6 +61,12 @@
   --theme-neitral-bgimage: url(@static/bg.jpg);
 
   --theme-default-bgimage: var(--theme-neitral-bgimage);
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
 }
 
 
