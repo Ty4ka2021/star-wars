@@ -48,7 +48,7 @@ const SearchPage = ({ setErrorApi }) => {
 
 	return (
 		<>
-			<h1 className={s.header}>SearchPage</h1>
+			<h1 className='header__text'>SearchPage</h1>
 			<UIInput
 				value={inputSearchValue}
 				handleInputChange={handleInputChange}

@@ -1,7 +1,8 @@
+import ErrorMessage from '@components/ErrorMessage/ErrorMessage'
+import Header from '@components/Header/Header'
 import PeoplePage from '@containers/PeoplePage/PeoplePage'
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Header from '../../components/Header/Header'
 import FavoritesPage from '../FavoritesPage/FavoritesPage'
 import HomePage from '../HomePage/HomePage'
 import NotFountPage from '../NotFountPage/NotFountPage'
@@ -25,6 +26,7 @@ const App = () => {
             <Route path='/favorites' element={<FavoritesPage />} />
             <Route path='/search' element={<SearchPage />} />
             <Route path='/people/:userId' element={<PersonPage />} />
+            <Route path='/fail' element={<ErrorMessage />} />
             <Route path='/not-found' element={<NotFountPage />} />
             <Route path='/*' element={<NotFountPage />} />
           </Routes>
